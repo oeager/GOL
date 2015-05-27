@@ -27,9 +27,9 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
-def siteUrl = 'https://github.com/oeager/GOL/tree/master'
-def gitUrl = 'https://github.com/oeager/OptimusClient.git'
-group = "com.bsince.optimus"
+def siteUrl = 'https://github.com/oeager/GOL'
+def gitUrl = 'https://github.com/oeager/GOL.git'
+group = "com.developer.log"
 
 install{
     repositories.mavenInstaller {
@@ -38,7 +38,7 @@ install{
             project {
                 packaging 'aar'
                 // Add your description here
-                name 'An asynchronous, callback-based Http client for Android built on top of Apache\'s HttpClient libraries' //项目描述
+                name 'a log tool' //项目描述
                 url siteUrl
                 // Set your license
                 licenses {
@@ -89,7 +89,7 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "maven"
-        name = "OptimusClient"    //发布到JCenter上的项目名字
+        name = "GOL"    //发布到JCenter上的项目名字
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]
