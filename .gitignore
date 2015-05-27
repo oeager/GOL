@@ -25,3 +25,12 @@ proguard/
 
 # Log Files
 *.log
+#custom ignore
+*.iml
+.gradle/
+gradle/
+.idea/
+build/
+*.properties
+gradlew
+.gitignore
