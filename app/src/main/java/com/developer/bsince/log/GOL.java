@@ -66,6 +66,16 @@ public class GOL {
         LOG.e(t, message, args);
     }
 
+    public static void wtf(String message, Object... args) {
+        LOG.wtf(message, args);
+    }
+    public static void json(String json) {
+        LOG.json(json);
+    }
+    public static void xml(String xml) {
+        LOG.xml(xml);
+    }
+
     public static ILog tag(String tag){
         for (int i =0,size = TAGGED_LOGS.size();i<size;i++){
             ((ILog.TagLog)LOG_POOL.get(TAGGED_LOGS.keyAt(i))).tag(tag);
@@ -114,7 +124,7 @@ public class GOL {
         @Override
         public void v(Throwable t, String message, Object... args) {
             for (int i = 0,size = LOG_POOL.size(); i < size; i++) {
-                LOG_POOL.get(i).v(t,message,args);
+                LOG_POOL.get(i).v(t, message, args);
             }
         }
 
@@ -168,10 +178,49 @@ public class GOL {
         }
 
         @Override
+        public void wtf(String message, Object... args) {
+            for (int i = 0,size = LOG_POOL.size(); i < size; i++) {
+                LOG_POOL.get(i).wtf(message, args);
+            }
+        }
+
+        @Override
         public void e(Throwable t, String message, Object... args) {
             for (int i = 0,size = LOG_POOL.size(); i < size; i++) {
-                LOG_POOL.get(i).e(t,message,args);
+                LOG_POOL.get(i).e(t, message, args);
+            }
+        }
+
+        @Override
+        public void json(String json) {
+            for (int i = 0,size = LOG_POOL.size(); i < size; i++) {
+                LOG_POOL.get(i).json(json);
+            }
+        }
+
+        @Override
+        public void xml(String xml) {
+            for (int i = 0,size = LOG_POOL.size(); i < size; i++) {
+                LOG_POOL.get(i).xml(xml);
             }
         }
     };
+
+    public ILog getLogger(){
+        if(!LOG_POOL.isEmpty()){
+            return LOG_POOL.get(0);
+        }
+        return LOG;
+    }
+    public <T extends ILog> T getLogger(Class<T> cls){
+        for (int i=0,len=LOG_POOL.size();i<len;i++){
+            ILog log = LOG_POOL.get(i);
+            if(log.getClass()==cls){
+                return (T)log;
+            }
+
+        }
+        return null;
+    }
+
 }

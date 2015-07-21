@@ -56,7 +56,22 @@ public class NoLogger implements ILog.TagLog {
     }
 
     @Override
+    public void wtf(String message, Object... args) {
+
+    }
+
+    @Override
     public void e(Throwable t, String message, Object... args) {
+
+    }
+
+    @Override
+    public void json(String json) {
+
+    }
+
+    @Override
+    public void xml(String xml) {
 
     }
 }

@@ -29,7 +29,13 @@ public interface ILog {
 
     void e(String message, Object... args);
 
+    void wtf(String message, Object... args);
+
     void e(Throwable t, String message, Object... args);
+
+    void json(String json);
+
+    void xml(String xml);
 
     public static interface TagLog extends ILog {
         void tag(String tag);
